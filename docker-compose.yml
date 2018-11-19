@@ -1,0 +1,20 @@
+version: '3'
+services:
+  PostgreSQL:
+    restart: always
+    image: postgres:latest
+    ports:
+      - "40000:5432"
+    environment:
+      - DEBUG=false
+      - POSTGRES_PASSWORD=123456
+      - POSTGRES_DB=movies
+    volumes:
+      - /srv/docker/postgresql:/var/lib/postgresql
+
+  moviedb:
+    build: .
+    ports:
+      - "8080:8080"
+    volumes:
+      - /home/parallels/Dokumente/LabProject:/home/root/Project
