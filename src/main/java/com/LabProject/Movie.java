@@ -17,26 +17,32 @@ public class Movie {
     String name;
     Date releaseDate;
 
-    // @ManyToOne
-    // Director directors;
+    @ManyToOne
+    Director directors;
 
     // public Movie(String name, Date releaseDate) {
 	// 	this.name = name;
 	// 	this.releaseDate = releaseDate;
     // }
     
-    // public Movie() {
+    public Movie() {
+        super();
+    }
 
-    // }
+    public Movie(String name, Date releaseDate) {
+        super();
+        this.releaseDate = releaseDate;
+        this.name = name;
+    }
 
 
-    void setMovieId(Integer movieId) { this.movieId = movieId; }
-    Integer getMovieId() { return movieId; }
+    public void setMovieId(Integer movieId) { this.movieId = movieId; }
+    public Integer getMovieId() { return movieId; }
 
-    void setName(String name) { this.name = name; }
-    String getName() { return name; }
+    public void setName(String name) { this.name = name; }
+    public String getName() { return name; }
 
-    void setReleaseDate(Date releaseDate) { this.releaseDate = releaseDate; }
-    Date getReleaseDate() { return releaseDate; }
+    public void setReleaseDate(Date releaseDate) { this.releaseDate = releaseDate; }
+    public Date getReleaseDate() { return releaseDate; }
     
 }

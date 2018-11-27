@@ -3,11 +3,12 @@ package com.LabProject;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.repository.CrudRepository;
 import org.springframework.http.MediaType;
 import java.util.*;
 
 
-interface MovieRepository extends JpaRepository<Movie, Integer> { 
+interface MovieRepository extends CrudRepository<Movie, Integer> { 
     Iterable<Movie> findAllByName(String name);
 }
 
@@ -52,8 +53,14 @@ public class GreetingController {
     }
 
     @GetMapping("/movie")
-    public List<Movie> getAllMovies() {
+    public Iterable<Movie> getAllMovies() {
         System.out.println("Fio");
-        return movieRepo.findAll();
+        System.out.println("Test");
+        Iterable<Movie> findAll = movieRepo.findAll();
+        ArrayList<String> arrayMovie = new ArrayList<String>();
+        movieRepo.findAll().forEach(movie -> arrayMovie.add(movie.name));
+        System.out.println(arrayMovie);
+
+        return findAll;
     }
 }
